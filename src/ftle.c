@@ -237,14 +237,14 @@ void InitializeFTLEArray(void) {
       }
       if(iguess >= 0)
 	guess = iguess;
-    }
+    
 		
     if(LocalSearchChecking) 
       printf("  %d of %d located in domain (%d caught by local search checking)\n", found, FTLE_CartMesh.XRes * FTLE_CartMesh.YRes * FTLE_CartMesh.ZRes, foundGS);
     else
       printf("  %d of %d located in domain\n", found, FTLE_CartMesh.XRes * FTLE_CartMesh.YRes * FTLE_CartMesh.ZRes);
     fflush(stdout);
-		
+    }		
 		
     /* Open bin file to store FTLE_MeshPt initialization data */
     sprintf(FTLE_BinFilePath, "%s%s", Path_Data, FTLE_ICFile);
