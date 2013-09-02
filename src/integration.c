@@ -70,7 +70,7 @@ double pEuler(LagrangianPoint *pt, double tstart, double tend) {
 	
     /* Choose (arbitrary) spacing for finite differencing */
     dx = 0.001;
-
+    
 	
     /* Intergrate until tc reaches tend */
     while((tc + TINY) < tend) { /* Integration not complete */
@@ -311,7 +311,8 @@ double pEuler(LagrangianPoint *pt, double tstart, double tend) {
             pt->ElementIndex = Get_Element_Local_Search(pt->X, pt->ElementIndex);
 		
         /* Check if point left domain */
-        if((Data_MeshType == CARTESIAN && TestOutsideDomain(pt->X)) || (Data_MeshType == UNSTRUCTURED && pt->ElementIndex < 0)) {
+        /* if((Data_MeshType == CARTESIAN && TestOutsideDomain(pt->X)) || (Data_MeshType == UNSTRUCTURED && pt->ElementIndex < 0)) { */
+        if((TestOutsideDomain(pt->X)) || (Data_MeshType == UNSTRUCTURED && pt->ElementIndex < 0)) { 
             /* Point left domain */
             pt->LeftDomain = 1;
             pt->LeftDomainTime = tc - h;
