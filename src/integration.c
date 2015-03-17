@@ -178,7 +178,7 @@ double pEuler(LagrangianPoint *pt, double tstart, double tend) {
                                         vt[i] = pt->V[i] - vn[i];
                                     }
                                     for(i=0; i<3; i++)
-                                        pt->V[i] = vt[i] - Int_NormalFlowScaling*vn[i];
+                                        pt->V[i] = vt[i] - Int_NormalFlowScaling*vn[i]; /* Int_NormalFlowScaling used as restitution coefficient */
                                 }
                                 break; /* If collision detected, no need to check other points */
                             }
@@ -220,7 +220,7 @@ double pEuler(LagrangianPoint *pt, double tstart, double tend) {
                                         vt[i] = pt->V[i] - vn[i];
                                     }
                                     for(i=0; i<3; i++)
-                                        pt->V[i] = vt[i] - Int_NormalFlowScaling*vn[i];
+                                        pt->V[i] = vt[i] - Int_NormalFlowScaling*vn[i]; /* Int_NormalFlowScaling used as restitution coefficient */
                                 }
                                 break; /* If collision detected, no need to check other points */
                             }
@@ -506,37 +506,25 @@ double RK4(LagrangianPoint *pt, double tstart, double tend) {
         MP1.X[0] = pt->X[0];
         MP1.X[1] = pt->X[1];
         MP1.X[2] = pt->X[2];
-        if(Data_MeshType == CARTESIAN)
-            GetVelocity_Cartesian(tc, &MP1, k1);
-        else if(Data_MeshType == UNSTRUCTURED)
-            GetVelocity_Unstructured(tc, &MP1, k1);
-		
+		GetVelocity(tc, &MP1, k1);
+        
         /* k2 */
         MP2.X[0] = pt->X[0] + 0.5 * k1[0] * h;
         MP2.X[1] = pt->X[1] + 0.5 * k1[1] * h;
         MP2.X[2] = pt->X[2] + 0.5 * k1[2] * h;
-        if(Data_MeshType == CARTESIAN)
-            GetVelocity_Cartesian(tc + h/2, &MP2, k2);
-        else if(Data_MeshType == UNSTRUCTURED)
-            GetVelocity_Unstructured(tc + h/2, &MP2, k2);
+        GetVelocity(tc + h/2, &MP2, k2);
 		
         /* k3 */
         MP3.X[0] = pt->X[0] + 0.5 * k2[0] * h;
         MP3.X[1] = pt->X[1] + 0.5 * k2[1] * h;
         MP3.X[2] = pt->X[2] + 0.5 * k2[2] * h;
-        if(Data_MeshType == CARTESIAN)
-            GetVelocity_Cartesian(tc + h/2, &MP3, k3);
-        else if(Data_MeshType == UNSTRUCTURED)
-            GetVelocity_Unstructured(tc + h/2, &MP3, k3);
+		GetVelocity(tc + h/2, &MP3, k3);
 		
         /* k4 */
         MP4.X[0] = pt->X[0] + k3[0] * h;
         MP4.X[1] = pt->X[1] + k3[1] * h;
         MP4.X[2] = pt->X[2] + k3[2] * h;
-        if(Data_MeshType == CARTESIAN)
-            GetVelocity_Cartesian(tc + h, &MP4, k4);
-        else if(Data_MeshType == UNSTRUCTURED)
-            GetVelocity_Unstructured(tc + h, &MP4, k4);
+		GetVelocity(tc + h, &MP4, k4);
 		
         /* Update position, time, and (if needed) element index */
         pt->X[0] = pt->X[0] + h * (k1[0] + 2 * k2[0] + 2 * k3[0] + k4[0]) / 6;
@@ -547,7 +535,7 @@ double RK4(LagrangianPoint *pt, double tstart, double tend) {
             pt->ElementIndex = Get_Element_Local_Search(pt->X, pt->ElementIndex);
 		
         /* Check if point left domain */
-        if((Data_MeshType == CARTESIAN && TestOutsideDomain(pt->X)) || (Data_MeshType == UNSTRUCTURED && pt->ElementIndex < 0)
+        if(TestOutsideDomain(pt->X) || (Data_MeshType == UNSTRUCTURED && pt->ElementIndex < 0)
            || MP1.LeftDomain || MP2.LeftDomain || MP3.LeftDomain || MP4.LeftDomain) {
             /* Point left domain, or data used to update location came from outside domain */
             pt->LeftDomain = 1;
@@ -561,10 +549,7 @@ double RK4(LagrangianPoint *pt, double tstart, double tend) {
         else { /* Point still in domain */
             /* Update velocity of particle */
             if(Int_Extrapolate) {
-                if(Data_MeshType == CARTESIAN)
-                    GetVelocity_Cartesian(tc, pt, pt->V);
-                else if(Data_MeshType == UNSTRUCTURED)
-                    GetVelocity_Unstructured(tc, pt, pt->V);
+				GetVelocity(tc, pt, pt->V);
             }
             if(Trace_Compute) {
                 if(Trace_CETCompute) {
@@ -687,60 +672,42 @@ double RKF(LagrangianPoint *pt, double tstart, double tend) {
         MP1.X[0] = pt->X[0];
         MP1.X[1] = pt->X[1];
         MP1.X[2] = pt->X[2];
-        if(Data_MeshType == CARTESIAN) 
-            GetVelocity_Cartesian(tc, &MP1, k1);
-        else if(Data_MeshType == UNSTRUCTURED) 
-            GetVelocity_Unstructured(tc, &MP1, k1); 
+		GetVelocity(tc, &MP1, k1); 
 		
         /* k2 */
         MP2.X[0] = pt->X[0] + 0.25 * k1[0] * h;
         MP2.X[1] = pt->X[1] + 0.25 * k1[1] * h;
         MP2.X[2] = pt->X[2] + 0.25 * k1[2] * h;
         ts = tc + 0.25 * h;
-        if(Data_MeshType == CARTESIAN) 
-            GetVelocity_Cartesian(ts, &MP2, k2);
-        else if(Data_MeshType == UNSTRUCTURED) 
-            GetVelocity_Unstructured(ts, &MP2, k2);
+		GetVelocity(ts, &MP2, k2);
 		
         /* k3 */
         MP3.X[0] = pt->X[0] + (a3 * k1[0] + b3 * k2[0]) * h;
         MP3.X[1] = pt->X[1] + (a3 * k1[1] + b3 * k2[1]) * h;
         MP3.X[2] = pt->X[2] + (a3 * k1[2] + b3 * k2[2]) * h;
         ts = tc + 0.375 * h;
-        if(Data_MeshType == CARTESIAN) 
-            GetVelocity_Cartesian(ts, &MP3, k3);
-        else if(Data_MeshType == UNSTRUCTURED) 
-            GetVelocity_Unstructured(ts, &MP3, k3);    
+		GetVelocity(ts, &MP3, k3);    
 		
         /* k4 */
         MP4.X[0] = pt->X[0] + (a4 * k1[0] + b4 * k2[0] + c4 * k3[0]) * h;
         MP4.X[1] = pt->X[1] + (a4 * k1[1] + b4 * k2[1] + c4 * k3[1]) * h;
         MP4.X[2] = pt->X[2] + (a4 * k1[2] + b4 * k2[2] + c4 * k3[2]) * h;
-        ts = tc + (12.0 * h) / 13.0;
-        if(Data_MeshType == CARTESIAN) 
-            GetVelocity_Cartesian(ts, &MP4, k4);
-        else if(Data_MeshType == UNSTRUCTURED) 
-            GetVelocity_Unstructured(ts, &MP4, k4);
+        ts = tc + (12.0 * h) / 13.0; 
+		GetVelocity(ts, &MP4, k4);
 		
         /* k5 */
         MP5.X[0] = pt->X[0] + (a5 * k1[0] + b5 * k2[0] + c5 * k3[0] + d5 * k4[0]) * h;
         MP5.X[1] = pt->X[1] + (a5 * k1[1] + b5 * k2[1] + c5 * k3[1] + d5 * k4[1]) * h;
         MP5.X[2] = pt->X[2] + (a5 * k1[2] + b5 * k2[2] + c5 * k3[2] + d5 * k4[2]) * h;
         ts = tc + h;
-        if(Data_MeshType == CARTESIAN) 
-            GetVelocity_Cartesian(ts, &MP5, k5);
-        else if(Data_MeshType == UNSTRUCTURED) 
-            GetVelocity_Unstructured(ts, &MP5, k5);
+		GetVelocity(ts, &MP5, k5);
 		
         /* k6 */
         MP6.X[0] = pt->X[0] + (a6 * k1[0] + b6 * k2[0] + c6 * k3[0] + d6 * k4[0] + e6 * k5[0]) * h;
         MP6.X[1] = pt->X[1] + (a6 * k1[1] + b6 * k2[1] + c6 * k3[1] + d6 * k4[1] + e6 * k5[1]) * h;
         MP6.X[2] = pt->X[2] + (a6 * k1[2] + b6 * k2[2] + c6 * k3[2] + d6 * k4[2] + e6 * k5[2]) * h;
-        ts = tc + 0.5 * h;
-        if(Data_MeshType == CARTESIAN) 
-            GetVelocity_Cartesian(ts, &MP6, k6);
-        else if(Data_MeshType == UNSTRUCTURED) 
-            GetVelocity_Unstructured(ts, &MP6, k6);
+        ts = tc + 0.5 * h; 
+		GetVelocity(ts, &MP6, k6);
 		
         /* Check if any intermediate interpolation points were outside the domain */
         if(MP1.LeftDomain || MP2.LeftDomain || MP3.LeftDomain || MP4.LeftDomain || MP5.LeftDomain || MP6.LeftDomain) {
@@ -785,10 +752,7 @@ double RKF(LagrangianPoint *pt, double tstart, double tend) {
             else { /* Point still in domain */
                 /* Update velocity of particle */
                 if(Int_Extrapolate) {
-                    if(Data_MeshType == CARTESIAN)
-                        GetVelocity_Cartesian(tc, pt, pt->V);
-                    else if(Data_MeshType == UNSTRUCTURED) 
-                        GetVelocity_Unstructured(tc, pt, pt->V);
+                    GetVelocity(tc, pt, pt->V);
                 } 
                 if(Trace_Compute) {
                     if(Trace_CETCompute) {

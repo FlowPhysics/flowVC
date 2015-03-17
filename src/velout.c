@@ -415,10 +415,7 @@ void OutputVelOut(double t, int slide) {
 				U[j] = 0.0;	
 		}
 		else {
-			if(Data_MeshType == CARTESIAN)
-				GetVelocity_Cartesian(t, &VelOut_Mesh[i], U);
-			else if(Data_MeshType == UNSTRUCTURED) 
-				GetVelocity_Unstructured(t, &VelOut_Mesh[i], U);
+			GetVelocity(t, &VelOut_Mesh[i], U);
 		}
 		/* Output velocity at point */
 		if(fwrite(U, sizeof(double), 3, VelOutFileID) < 3)

@@ -31,7 +31,7 @@
 /* main function */
 int main (int argc, const char * argv[]) {
     double t1, t2, runtime, nextoutputtime, firstoutputtime;
-	int    df, ss, ii, jj, ee, i, j, k, startindex, num_integrated, outputframe = 0 , outputcount = 0;
+	int    df, ss, ii, jj, ee, i, j, k, startindex = 0, num_integrated, outputframe = 0, outputcount = 0;
 	char   BinFile[LONGSTRING];
 	time_t SimulationStartTime, InitializationTime, SimulationStopTime;
 	FILE   *Trace_BinFileID;
@@ -55,7 +55,6 @@ int main (int argc, const char * argv[]) {
 		GenerateStaggeredRelease();
 	
 	/* Load velocity for first frame needed to start integration */
-    /*** UPDATE HERE ***/
 	if(Data_MeshType == CARTESIAN)
 		LoadCartVelDataFrame(Data_FirstFrame);
 	else if(Data_MeshType == UNSTRUCTURED) {
@@ -64,7 +63,7 @@ int main (int argc, const char * argv[]) {
 		LoadUnstructVelDataFrame(Data_FirstFrame);
 	}
 	
-	/* If interpolating velocity fields onto output mesh, initialize output mesh */
+	/* Do initialization */
 	if(VelOut_Compute) {
 		if(VelOut_GenerateMesh)
 			GenerateVelOutMesh();
@@ -152,7 +151,6 @@ int main (int argc, const char * argv[]) {
 			LoadCartVelDataFrame(df + Int_TimeDirection);
 		else if(Data_MeshType == UNSTRUCTURED)
 			LoadUnstructVelDataFrame(df + Int_TimeDirection);
-        /*** UPDATE HERE ***/
 		
 		/* If computing activation potential, load strain rate data */
 		if(Trace_Compute && (Trace_ReleaseStrategy != STAGGERED) && Trace_APCompute)
@@ -226,8 +224,8 @@ int main (int argc, const char * argv[]) {
 					   for(k = 0; k < FTLE_CartMesh.ZRes; k++) {
 						   for(j = 0; j < FTLE_CartMesh.YRes; j++) {
 							   for(i = 0; i < FTLE_CartMesh.XRes; i++) {
-								   /* Make sure point not initially outside of domain AND: it hasn't since left, unless extrapolating position */
-								   if(FTLE_MeshPt[i][j][k].Pt.LeftDomainTime > -TINY && (!FTLE_MeshPt[i][j][k].Pt.LeftDomain || Int_Extrapolate)) {
+								   /* Make sure point initially inside of domain AND it hasn't since left, unless extrapolating position */
+								   if((FTLE_MeshPt[i][j][k].Pt.LeftDomainTime > -TINY) && (!FTLE_MeshPt[i][j][k].Pt.LeftDomain || Int_Extrapolate)) {
 									   /* Create TempPoint to integrate in case point leaves the domain */
 									   TempPoint.X[0] = FTLE_MeshPt[i][j][k].Pt.X[0];
 									   TempPoint.X[1] = FTLE_MeshPt[i][j][k].Pt.X[1];

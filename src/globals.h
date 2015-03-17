@@ -51,6 +51,7 @@ extern double		Data_TMax;
 extern int			Data_TRes;
 extern double		Data_TDelta;
 extern int			Data_TPeriodic;
+extern int			Data_XPeriodic;
 extern int			Data_SuffixTMin;
 extern int			Data_SuffixTDelta;
 extern int			Data_FirstFrame;

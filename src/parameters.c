@@ -15,6 +15,7 @@
 #include "macros.h"
 #include "mymath.h"
 #include "parameters.h"
+#include "mesh.h"
 #include "io.h"
 
 void ReadInParameters(int argc, const char *argv[]) {
@@ -40,6 +41,7 @@ void ReadInParameters(int argc, const char *argv[]) {
         ReadInNextValue(Parameters_InFileID, &Data_TDelta, 'f');
         ReadInNextValue(Parameters_InFileID, &Data_TMin, 'f');
         ReadInNextValue(Parameters_InFileID, &Data_TPeriodic, 'd');
+        ReadInNextValue(Parameters_InFileID, &Data_XPeriodic, 'd');
         ReadInNextValue(Parameters_InFileID, &Data_MeshBounds.XMin, 'f');
         ReadInNextValue(Parameters_InFileID, &Data_MeshBounds.XMax, 'f');
         ReadInNextValue(Parameters_InFileID, &Data_MeshBounds.YMin, 'f');
@@ -151,6 +153,7 @@ void ReadInParameters(int argc, const char *argv[]) {
         fprintf(stderr,"Data_TDelta\t\t=\t%10g\n",Data_TDelta);
         fprintf(stderr,"Data_TMin\t\t=\t%10g\n",Data_TMin);
         fprintf(stderr,"Data_TPeriodic\t\t=\t%10d\n",Data_TPeriodic);
+        fprintf(stderr,"Data_XPeriodic\t\t=\t%10d\n",Data_XPeriodic);
         fprintf(stderr,"Data_MeshBounds.XMin\t=\t%10g\n",Data_MeshBounds.XMin);
         fprintf(stderr,"Data_MeshBounds.XMax\t=\t%10g\n",Data_MeshBounds.XMax);
         fprintf(stderr,"Data_MeshBounds.YMin\t=\t%10g\n",Data_MeshBounds.YMin);
@@ -386,7 +389,6 @@ void SetDerivedParameters(void) {
     else if(Particle_Radius > TINY) {
         K = (4.5 * Fluid_Viscosity) / (Fluid_Density * Particle_Radius * Particle_Radius);
         R = (2 * Fluid_Density) / (Fluid_Density + 2 * Particle_Density);
-        printf("K = %f, R = %f\n", K, R);
     }
 	
     printf("OK!\n");
@@ -397,9 +399,19 @@ void CheckParameters(void) {
 	
     printf("Checking parameters...\n");
 	
+	if (Data_MeshType == CARTESIAN) {
+		LoadCartMeshData();
+		Data_MeshBounds.XMin = Vel_CartMesh.XMin;
+		Data_MeshBounds.XMax = Vel_CartMesh.XMax;
+        Data_MeshBounds.YMin = Vel_CartMesh.YMin;
+        Data_MeshBounds.YMax = Vel_CartMesh.YMax;
+        Data_MeshBounds.ZMin = Vel_CartMesh.ZMin;
+        Data_MeshBounds.ZMax = Vel_CartMesh.ZMax;
+	}
+	
     if(Dimensions != 2 && Dimensions != 3)
         FatalError("Dimensions must be equal to 2 or 3");
-    if(Data_MeshType != CARTESIAN && Data_MeshType != UNSTRUCTURED)
+    if(Data_MeshType != CARTESIAN && Data_MeshType != UNSTRUCTURED && Data_MeshType != ANALYTIC)
         FatalError("Unsupported Data_MeshType");
     if(Data_TRes < 2)
         FatalError("Data_TRes must be 2 or greater.");
@@ -409,6 +421,10 @@ void CheckParameters(void) {
         FatalError("Data_TPeriodic should be 0 or 1");
     else if(Data_TPeriodic)
         printf("  Data specified as periodic: Ensure first and last data files correspond to same point in cycle.\n");
+    if(Data_XPeriodic != 0 && Data_XPeriodic != 1)
+        FatalError("Data_XPeriodic should be 0 or 1");
+    else if(Data_XPeriodic && Data_MeshType != CARTESIAN)
+        FatalError("Spatially periodic data only supported for Data_MeshType = %d", CARTESIAN);
     if(Data_MeshBounds.XMin >= Data_MeshBounds.XMax)
         FatalError("Data_MeshBounds.XMin >= Data_MeshBounds.XMax");
     if(Data_MeshBounds.YMin >= Data_MeshBounds.YMax)

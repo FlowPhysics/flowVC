@@ -48,6 +48,7 @@ double		Data_TMax = 0;
 int			Data_TRes = 0;
 double		Data_TDelta = 0;
 int			Data_TPeriodic = 0;
+int			Data_XPeriodic = 0;
 int			Data_SuffixTMin = 0;
 int			Data_SuffixTDelta = 0;
 int			Data_FirstFrame = 0;

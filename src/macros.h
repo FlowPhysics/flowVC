@@ -15,6 +15,7 @@
 #define LONGSTRING 200 
 
 #define TINY 1.0e-10
+#define PI 3.1415926535898
 #define UNLAUNCHED 0
 #define LAUNCHED 1
 #define COMPLETE 2

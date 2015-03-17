@@ -23,7 +23,7 @@ void LoadMeshData(void) {
 	printf("Loading mesh data...");
 	if (Data_MeshType == CARTESIAN) 
 		LoadCartMeshData();
-	else {
+	else if (Data_MeshType == UNSTRUCTURED)  {
 		LoadUnstructMeshData();    
 		if(Trace_Compute && Trace_CETCompute) {
 			if(Trace_CETAuxillaryMesh)
@@ -553,8 +553,9 @@ int Get_Element_Local_Search(const double *X, int guess) {
 					guess = Vel_MeshElementArray[guess].NeighborIndex[2];
 				else if(fabs(d - (1 - r - s - t)) < TINY) 
 					guess = Vel_MeshElementArray[guess].NeighborIndex[3];
-				else 
+				else {
 					FatalError("Indeterminate neighbor in function Get_Element_Local_Search");
+				}
 				
 				if(guess == -1) /* Neighbor not present, could not find element from local search (likely point left domain) */ 
 					return(-1);

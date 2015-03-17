@@ -58,6 +58,32 @@ void GenerateStaggeredRelease(void) {
 	
 	Trace_NumTracers = 0; /* number of points that get released */
 	
+	/* If normal flow on, temporarily turn it off */
+	if(Int_NormalFlow) {
+		Int_NormalFlow = 0;
+		nff = 1;
+	}    
+	else
+		nff = 0;
+	
+	/* We need to first load velocity data if inertial particles need to be initialized */
+	if (Particle_Radius > TINY && Particle_ICType) {
+		/* Load first velocity data frame */
+		if(Data_MeshType == CARTESIAN) {
+			LoadCartVelDataFrame(Data_FirstFrame);
+			LoadCartVelDataFrame(Data_FirstFrame);
+		}
+		else if(Data_MeshType == UNSTRUCTURED) {
+			LoadUnstructVelDataFrame(Data_FirstFrame+1);
+			LoadUnstructVelDataFrame(Data_FirstFrame+1);
+		}
+	}
+	/* Determine time interval of loaded data */
+	Data_LoadedTMin = Data_TMin;
+	Data_LoadedTMax = Data_LoadedTMin + Data_TDelta;
+	printf("Data loaded in memory spans t = %g to %g\n", Data_LoadedTMin, Data_LoadedTMax);
+	fflush(stdout);
+	
 	/* Initialize first release to Output_TStart */
 	for(ss = 0; ss < Trace_NumReleaseLocations; ss++) {
 		if(Trace_ReleasePoints[ss].LeftDomain) 
@@ -92,14 +118,6 @@ void GenerateStaggeredRelease(void) {
 		}
 	}
 	
-	/* If normal flow on, temporarily turn it off */
-	if(Int_NormalFlow) {
-		Int_NormalFlow = 0;
-		nff = 1;
-	}    
-	else
-		nff = 0;
-	
 	/* Load first velocity data frame */
 	if(Data_MeshType == CARTESIAN) 
 		LoadCartVelDataFrame(Data_FirstFrame);
@@ -128,12 +146,7 @@ void GenerateStaggeredRelease(void) {
 				/* Only consider release points located inside the velocity domain */
 				if(!Trace_ReleasePoints[ss].LeftDomain) {
 					/* Interpolate velocity at release point at start of interval */
-					if(Data_MeshType == CARTESIAN) {
-						GetVelocity_Cartesian(Data_LoadedTMin, &Trace_ReleasePoints[ss], u0[ss]);
-					}     
-					else if(Data_MeshType == UNSTRUCTURED) { 
-						GetVelocity_Unstructured(Data_LoadedTMin, &Trace_ReleasePoints[ss], u0[ss]);
-					}
+					GetVelocity(Data_LoadedTMin, &Trace_ReleasePoints[ss], u0[ss]);
 				}
 			}
 		}
@@ -146,14 +159,8 @@ void GenerateStaggeredRelease(void) {
 			/* Only consider release points located inside the velocity domain */
 			if(!Trace_ReleasePoints[ss].LeftDomain && !ptdone[ss]) {
 				/* Interpolate velocity at release point at bounds of loaded data */
-				if(Data_MeshType == CARTESIAN) {
-					GetVelocity_Cartesian(Data_LoadedTMin, &Trace_ReleasePoints[ss], us);
-					GetVelocity_Cartesian(Data_LoadedTMax, &Trace_ReleasePoints[ss], ue);
-				}     
-				else if(Data_MeshType == UNSTRUCTURED) { 
-					GetVelocity_Unstructured(Data_LoadedTMin, &Trace_ReleasePoints[ss], us);
-					GetVelocity_Unstructured(Data_LoadedTMax, &Trace_ReleasePoints[ss], ue);
-				}	
+				GetVelocity(Data_LoadedTMin, &Trace_ReleasePoints[ss], us);
+				GetVelocity(Data_LoadedTMax, &Trace_ReleasePoints[ss], ue);
 				/* Calculate "signed magnitude" of velocity */
 				usbar = SIGN(sqrt(vdot(us, us, 3)), vdot(us, u0[ss], 3));
 				uebar = SIGN(sqrt(vdot(ue, ue, 3)), vdot(ue, u0[ss], 3));
