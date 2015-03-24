@@ -270,29 +270,14 @@ void GetVelocity_Cartesian(double tq, LagrangianPoint *pt, double *dXdt) {
 	double V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16;
 	double f0000, f0001, f0010, f0011, f0100, f0101, f0110, f0111, f1000, f1001, f1010, f1011, f1100, f1101, f1110, f1111;
 	
-	
 	/* check outside domain */
-	if(TestOutsideCartVelDomain(pt->X) && !Data_XPeriodic) {
+	if(TestOutsideCartVelDomain(pt->X)) {
 		dXdt[0] = 0.0;
 		dXdt[1] = 0.0;
 		dXdt[2] = 0.0;
 		pt->LeftDomain = 1;
 	}
 	else { 
-		if(Data_XPeriodic) {
-			 if(pt->X[0] < Vel_CartMesh.XMin)
-			 	pt->X[0] = pt->X[0] + (Vel_CartMesh.XMax - Vel_CartMesh.XMin);
-			 else if(pt->X[0] > Vel_CartMesh.XMax) 
-			 	pt->X[0] = pt->X[0] - (Vel_CartMesh.XMax - Vel_CartMesh.XMin);
-			 if(pt->X[1] < Vel_CartMesh.YMin)
-			 	pt->X[1] = pt->X[1] + (Vel_CartMesh.YMax - Vel_CartMesh.YMin);
-			 else if(pt->X[1] > Vel_CartMesh.YMax) 
-			 	pt->X[1] = pt->X[1] - (Vel_CartMesh.YMax - Vel_CartMesh.YMin);
-			 if(pt->X[2] < Vel_CartMesh.ZMin)
-			 	pt->X[2] = pt->X[2] + (Vel_CartMesh.ZMax - Vel_CartMesh.ZMin);
-			 else if(pt->X[2] > Vel_CartMesh.ZMax) 
-			 	pt->X[2] = pt->X[2] - (Vel_CartMesh.ZMax - Vel_CartMesh.ZMin);	 	
-		}
 		/* Set "local" coordinates (relative to space-time voxel) */
 		/* t */
 		tloc = (tq - Data_LoadedTMin) / (Data_LoadedTMax - Data_LoadedTMin);

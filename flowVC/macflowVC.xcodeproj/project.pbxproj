@@ -1,0 +1,333 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		083BE4CC1AC0E73200E7C3DA /* exposuretime.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4AB1AC0E73200E7C3DA /* exposuretime.c */; };
+		083BE4CD1AC0E73200E7C3DA /* ftle.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4AD1AC0E73200E7C3DA /* ftle.c */; };
+		083BE4CE1AC0E73200E7C3DA /* globals.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4AF1AC0E73200E7C3DA /* globals.c */; };
+		083BE4CF1AC0E73200E7C3DA /* integration.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4B11AC0E73200E7C3DA /* integration.c */; };
+		083BE4D01AC0E73200E7C3DA /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4B31AC0E73200E7C3DA /* io.c */; };
+		083BE4D11AC0E73200E7C3DA /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4B61AC0E73200E7C3DA /* main.c */; };
+		083BE4D21AC0E73200E7C3DA /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4B71AC0E73200E7C3DA /* memory.c */; };
+		083BE4D31AC0E73200E7C3DA /* mesh.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4B91AC0E73200E7C3DA /* mesh.c */; };
+		083BE4D41AC0E73200E7C3DA /* mymath.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4BB1AC0E73200E7C3DA /* mymath.c */; };
+		083BE4D51AC0E73200E7C3DA /* parameters.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4BD1AC0E73200E7C3DA /* parameters.c */; };
+		083BE4D61AC0E73200E7C3DA /* residencetime.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4BF1AC0E73200E7C3DA /* residencetime.c */; };
+		083BE4D71AC0E73200E7C3DA /* strainrate.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4C11AC0E73200E7C3DA /* strainrate.c */; };
+		083BE4D81AC0E73200E7C3DA /* tracers.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4C41AC0E73200E7C3DA /* tracers.c */; };
+		083BE4D91AC0E73200E7C3DA /* velocity.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4C61AC0E73200E7C3DA /* velocity.c */; };
+		083BE4DA1AC0E73200E7C3DA /* velout.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4C81AC0E73200E7C3DA /* velout.c */; };
+		083BE4DB1AC0E73200E7C3DA /* vorticity.c in Sources */ = {isa = PBXBuildFile; fileRef = 083BE4CA1AC0E73200E7C3DA /* vorticity.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		083BE49F1AC0E6BC00E7C3DA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		083BE4A11AC0E6BC00E7C3DA /* macflowVC */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = macflowVC; sourceTree = BUILT_PRODUCTS_DIR; };
+		083BE4AB1AC0E73200E7C3DA /* exposuretime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = exposuretime.c; path = ../../src/exposuretime.c; sourceTree = "<group>"; };
+		083BE4AC1AC0E73200E7C3DA /* exposuretime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = exposuretime.h; path = ../../src/exposuretime.h; sourceTree = "<group>"; };
+		083BE4AD1AC0E73200E7C3DA /* ftle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftle.c; path = ../../src/ftle.c; sourceTree = "<group>"; };
+		083BE4AE1AC0E73200E7C3DA /* ftle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ftle.h; path = ../../src/ftle.h; sourceTree = "<group>"; };
+		083BE4AF1AC0E73200E7C3DA /* globals.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = globals.c; path = ../../src/globals.c; sourceTree = "<group>"; };
+		083BE4B01AC0E73200E7C3DA /* globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = globals.h; path = ../../src/globals.h; sourceTree = "<group>"; };
+		083BE4B11AC0E73200E7C3DA /* integration.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = integration.c; path = ../../src/integration.c; sourceTree = "<group>"; };
+		083BE4B21AC0E73200E7C3DA /* integration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = integration.h; path = ../../src/integration.h; sourceTree = "<group>"; };
+		083BE4B31AC0E73200E7C3DA /* io.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = io.c; path = ../../src/io.c; sourceTree = "<group>"; };
+		083BE4B41AC0E73200E7C3DA /* io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = io.h; path = ../../src/io.h; sourceTree = "<group>"; };
+		083BE4B51AC0E73200E7C3DA /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = macros.h; path = ../../src/macros.h; sourceTree = "<group>"; };
+		083BE4B61AC0E73200E7C3DA /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = main.c; path = ../../src/main.c; sourceTree = "<group>"; };
+		083BE4B71AC0E73200E7C3DA /* memory.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = memory.c; path = ../../src/memory.c; sourceTree = "<group>"; };
+		083BE4B81AC0E73200E7C3DA /* memory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = memory.h; path = ../../src/memory.h; sourceTree = "<group>"; };
+		083BE4B91AC0E73200E7C3DA /* mesh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mesh.c; path = ../../src/mesh.c; sourceTree = "<group>"; };
+		083BE4BA1AC0E73200E7C3DA /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mesh.h; path = ../../src/mesh.h; sourceTree = "<group>"; };
+		083BE4BB1AC0E73200E7C3DA /* mymath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mymath.c; path = ../../src/mymath.c; sourceTree = "<group>"; };
+		083BE4BC1AC0E73200E7C3DA /* mymath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mymath.h; path = ../../src/mymath.h; sourceTree = "<group>"; };
+		083BE4BD1AC0E73200E7C3DA /* parameters.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = parameters.c; path = ../../src/parameters.c; sourceTree = "<group>"; };
+		083BE4BE1AC0E73200E7C3DA /* parameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = parameters.h; path = ../../src/parameters.h; sourceTree = "<group>"; };
+		083BE4BF1AC0E73200E7C3DA /* residencetime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = residencetime.c; path = ../../src/residencetime.c; sourceTree = "<group>"; };
+		083BE4C01AC0E73200E7C3DA /* residencetime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = residencetime.h; path = ../../src/residencetime.h; sourceTree = "<group>"; };
+		083BE4C11AC0E73200E7C3DA /* strainrate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = strainrate.c; path = ../../src/strainrate.c; sourceTree = "<group>"; };
+		083BE4C21AC0E73200E7C3DA /* strainrate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = strainrate.h; path = ../../src/strainrate.h; sourceTree = "<group>"; };
+		083BE4C31AC0E73200E7C3DA /* structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = structs.h; path = ../../src/structs.h; sourceTree = "<group>"; };
+		083BE4C41AC0E73200E7C3DA /* tracers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tracers.c; path = ../../src/tracers.c; sourceTree = "<group>"; };
+		083BE4C51AC0E73200E7C3DA /* tracers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tracers.h; path = ../../src/tracers.h; sourceTree = "<group>"; };
+		083BE4C61AC0E73200E7C3DA /* velocity.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = velocity.c; path = ../../src/velocity.c; sourceTree = "<group>"; };
+		083BE4C71AC0E73200E7C3DA /* velocity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = velocity.h; path = ../../src/velocity.h; sourceTree = "<group>"; };
+		083BE4C81AC0E73200E7C3DA /* velout.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = velout.c; path = ../../src/velout.c; sourceTree = "<group>"; };
+		083BE4C91AC0E73200E7C3DA /* velout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = velout.h; path = ../../src/velout.h; sourceTree = "<group>"; };
+		083BE4CA1AC0E73200E7C3DA /* vorticity.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vorticity.c; path = ../../src/vorticity.c; sourceTree = "<group>"; };
+		083BE4CB1AC0E73200E7C3DA /* vorticity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vorticity.h; path = ../../src/vorticity.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		083BE49E1AC0E6BC00E7C3DA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		083BE4981AC0E6BC00E7C3DA = {
+			isa = PBXGroup;
+			children = (
+				083BE4A31AC0E6BC00E7C3DA /* flowVC */,
+				083BE4A21AC0E6BC00E7C3DA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		083BE4A21AC0E6BC00E7C3DA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				083BE4A11AC0E6BC00E7C3DA /* macflowVC */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		083BE4A31AC0E6BC00E7C3DA /* flowVC */ = {
+			isa = PBXGroup;
+			children = (
+				083BE4AB1AC0E73200E7C3DA /* exposuretime.c */,
+				083BE4AC1AC0E73200E7C3DA /* exposuretime.h */,
+				083BE4AD1AC0E73200E7C3DA /* ftle.c */,
+				083BE4AE1AC0E73200E7C3DA /* ftle.h */,
+				083BE4AF1AC0E73200E7C3DA /* globals.c */,
+				083BE4B01AC0E73200E7C3DA /* globals.h */,
+				083BE4B11AC0E73200E7C3DA /* integration.c */,
+				083BE4B21AC0E73200E7C3DA /* integration.h */,
+				083BE4B31AC0E73200E7C3DA /* io.c */,
+				083BE4B41AC0E73200E7C3DA /* io.h */,
+				083BE4B51AC0E73200E7C3DA /* macros.h */,
+				083BE4B61AC0E73200E7C3DA /* main.c */,
+				083BE4B71AC0E73200E7C3DA /* memory.c */,
+				083BE4B81AC0E73200E7C3DA /* memory.h */,
+				083BE4B91AC0E73200E7C3DA /* mesh.c */,
+				083BE4BA1AC0E73200E7C3DA /* mesh.h */,
+				083BE4BB1AC0E73200E7C3DA /* mymath.c */,
+				083BE4BC1AC0E73200E7C3DA /* mymath.h */,
+				083BE4BD1AC0E73200E7C3DA /* parameters.c */,
+				083BE4BE1AC0E73200E7C3DA /* parameters.h */,
+				083BE4BF1AC0E73200E7C3DA /* residencetime.c */,
+				083BE4C01AC0E73200E7C3DA /* residencetime.h */,
+				083BE4C11AC0E73200E7C3DA /* strainrate.c */,
+				083BE4C21AC0E73200E7C3DA /* strainrate.h */,
+				083BE4C31AC0E73200E7C3DA /* structs.h */,
+				083BE4C41AC0E73200E7C3DA /* tracers.c */,
+				083BE4C51AC0E73200E7C3DA /* tracers.h */,
+				083BE4C61AC0E73200E7C3DA /* velocity.c */,
+				083BE4C71AC0E73200E7C3DA /* velocity.h */,
+				083BE4C81AC0E73200E7C3DA /* velout.c */,
+				083BE4C91AC0E73200E7C3DA /* velout.h */,
+				083BE4CA1AC0E73200E7C3DA /* vorticity.c */,
+				083BE4CB1AC0E73200E7C3DA /* vorticity.h */,
+			);
+			path = flowVC;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		083BE4A01AC0E6BC00E7C3DA /* macflowVC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 083BE4A81AC0E6BC00E7C3DA /* Build configuration list for PBXNativeTarget "macflowVC" */;
+			buildPhases = (
+				083BE49D1AC0E6BC00E7C3DA /* Sources */,
+				083BE49E1AC0E6BC00E7C3DA /* Frameworks */,
+				083BE49F1AC0E6BC00E7C3DA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = macflowVC;
+			productName = flowVC;
+			productReference = 083BE4A11AC0E6BC00E7C3DA /* macflowVC */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		083BE4991AC0E6BC00E7C3DA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Shawn Shadden";
+				TargetAttributes = {
+					083BE4A01AC0E6BC00E7C3DA = {
+						CreatedOnToolsVersion = 6.2;
+					};
+				};
+			};
+			buildConfigurationList = 083BE49C1AC0E6BC00E7C3DA /* Build configuration list for PBXProject "macflowVC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 083BE4981AC0E6BC00E7C3DA;
+			productRefGroup = 083BE4A21AC0E6BC00E7C3DA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				083BE4A01AC0E6BC00E7C3DA /* macflowVC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		083BE49D1AC0E6BC00E7C3DA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				083BE4D81AC0E73200E7C3DA /* tracers.c in Sources */,
+				083BE4CD1AC0E73200E7C3DA /* ftle.c in Sources */,
+				083BE4D01AC0E73200E7C3DA /* io.c in Sources */,
+				083BE4D71AC0E73200E7C3DA /* strainrate.c in Sources */,
+				083BE4DB1AC0E73200E7C3DA /* vorticity.c in Sources */,
+				083BE4D21AC0E73200E7C3DA /* memory.c in Sources */,
+				083BE4D41AC0E73200E7C3DA /* mymath.c in Sources */,
+				083BE4CF1AC0E73200E7C3DA /* integration.c in Sources */,
+				083BE4D61AC0E73200E7C3DA /* residencetime.c in Sources */,
+				083BE4DA1AC0E73200E7C3DA /* velout.c in Sources */,
+				083BE4D91AC0E73200E7C3DA /* velocity.c in Sources */,
+				083BE4D31AC0E73200E7C3DA /* mesh.c in Sources */,
+				083BE4CE1AC0E73200E7C3DA /* globals.c in Sources */,
+				083BE4D51AC0E73200E7C3DA /* parameters.c in Sources */,
+				083BE4CC1AC0E73200E7C3DA /* exposuretime.c in Sources */,
+				083BE4D11AC0E73200E7C3DA /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		083BE4A61AC0E6BC00E7C3DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		083BE4A71AC0E6BC00E7C3DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		083BE4A91AC0E6BC00E7C3DA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = macflowVC;
+			};
+			name = Debug;
+		};
+		083BE4AA1AC0E6BC00E7C3DA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = macflowVC;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		083BE49C1AC0E6BC00E7C3DA /* Build configuration list for PBXProject "macflowVC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				083BE4A61AC0E6BC00E7C3DA /* Debug */,
+				083BE4A71AC0E6BC00E7C3DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		083BE4A81AC0E6BC00E7C3DA /* Build configuration list for PBXNativeTarget "macflowVC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				083BE4A91AC0E6BC00E7C3DA /* Debug */,
+				083BE4AA1AC0E6BC00E7C3DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 083BE4991AC0E6BC00E7C3DA /* Project object */;
+}

@@ -26,7 +26,7 @@ void ReadInParameters(int argc, const char *argv[]) {
         if((Parameters_InFileID = fopen(argv[1], "r")) == NULL)
             FatalError("Could not open input file %s", argv[1]);
 		
-        fprintf(stderr, "Reading in parameters...");
+        fprintf(stderr, "Reading in parameters from file %s...\n", argv[1]);
 		
         ReadInNextValue(Parameters_InFileID, Path_Data, 's');
         ReadInNextValue(Parameters_InFileID, Path_Output, 's');
