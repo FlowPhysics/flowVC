@@ -22,5 +22,6 @@ void GetVelocity_Analytic(double t,  LagrangianPoint *pt, double *dXdt);
 int InsideBoundaryElement(LagrangianPoint *pt);
 int TestOutsideCartVelDomain(double X[3]);
 int  TestOutsideDomain(double point[3]);
+void ReMapPt(LagrangianPoint *pt, double *newpt);
 
 #endif

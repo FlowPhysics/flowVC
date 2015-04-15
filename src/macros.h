@@ -23,6 +23,8 @@
 #define UNSTRUCTURED 1
 #define CELLDATA 2
 #define ANALYTIC 2
+#define SPATIALPERIODIC 1
+#define VELOCITYPERIODIC 2
 
 #define INITIALIZED 0
 #define ASCII_LIST 1

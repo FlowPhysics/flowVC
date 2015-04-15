@@ -38,7 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		083BE4A11AC0E6BC00E7C3DA /* macflowVC */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = macflowVC; sourceTree = BUILT_PRODUCTS_DIR; };
+		083BE4A11AC0E6BC00E7C3DA /* macflowVC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = macflowVC; sourceTree = BUILT_PRODUCTS_DIR; };
 		083BE4AB1AC0E73200E7C3DA /* exposuretime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = exposuretime.c; path = ../../src/exposuretime.c; sourceTree = "<group>"; };
 		083BE4AC1AC0E73200E7C3DA /* exposuretime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = exposuretime.h; path = ../../src/exposuretime.h; sourceTree = "<group>"; };
 		083BE4AD1AC0E73200E7C3DA /* ftle.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ftle.c; path = ../../src/ftle.c; sourceTree = "<group>"; };
@@ -326,6 +326,7 @@
 				083BE4AA1AC0E6BC00E7C3DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

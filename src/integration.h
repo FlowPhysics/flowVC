@@ -15,6 +15,5 @@ double pEuler(LagrangianPoint *pt, double tstart, double tend);
 double Euler(LagrangianPoint *pt, double tstart, double tend);
 double RK4(LagrangianPoint *pt, double tstart, double tend);
 double RKF(LagrangianPoint *pt, double tstart, double tend);
-void ReMapPt(LagrangianPoint *pt);
 
 #endif
