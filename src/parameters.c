@@ -421,8 +421,8 @@ void CheckParameters(void) {
         FatalError("Data_TPeriodic should be 0 or 1");
     else if(Data_TPeriodic)
         printf("  Data specified as periodic: Ensure first and last data files correspond to same point in cycle.\n");
-    if(Data_XPeriodic != 0 && Data_XPeriodic != 1)
-        FatalError("Data_XPeriodic should be 0 or 1");
+    if(Data_XPeriodic != 0 && Data_XPeriodic != 1 && Data_XPeriodic != 2)
+        FatalError("Data_XPeriodic should be 0, 1 or 2");
     else if(Data_XPeriodic && Data_MeshType != CARTESIAN)
         FatalError("Spatially periodic data only supported for Data_MeshType = %d", CARTESIAN);
     if(Data_MeshBounds.XMin >= Data_MeshBounds.XMax)

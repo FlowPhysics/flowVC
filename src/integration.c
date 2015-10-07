@@ -53,8 +53,8 @@ double pEuler(LagrangianPoint *pt, double tstart, double tend) {
      Note, v'= f solved analytically and then x' = v updated via Euler.
      ***/
     
-    double h, tc, dx, X0[3], Xs[3], vec1[3], vec2[3], u0[3], dudt0[3], dotu0[3], gradu0[3][3], wp[3], strain_rate0 = 0, strain_rate1 = 0;
-    double u, v, w, d, bx1[3], bx2[3], abn[3], vt[3], vn[3];
+    double h, tc, dx, X0[3], Xs[3], vec1[3], vec2[3], u0[3], dudt0[3], dotu0[3], gradu0[3][3], strain_rate0 = 0, strain_rate1 = 0;
+    double u, v, w, d, bx1[3], bx2[3], abn[3], vt[3], vn[3], D_alpha, D_beta[3];
     int i, ii, jj, sindex, lbdnodes[3], bdnodes[3], count;
     LagrangianPoint MPA[6];
     
@@ -293,14 +293,15 @@ double pEuler(LagrangianPoint *pt, double tstart, double tend) {
         for(ii = 0; ii < 3; ii++)
             dudt0[ii] = dotu0[ii] + (u0[0] * gradu0[ii][0]) + (u0[1] * gradu0[ii][1]) + (u0[2] * gradu0[ii][2]);
         
-        /* Difference in velocity between particle and fluid  */
-        for(ii = 0; ii < 3; ii++)
-            wp[ii] = exp(-K * R *h) * ( (pt->V[ii] - u0[ii]) - ((1 - 1.5 * R) * (Gravity[ii] - dudt0[ii]) / (K * R)) ) + ( (1 - 1.5 * R) * (Gravity[ii] - dudt0[ii]) / (K * R) );
-        
-        /* Update velocity and position of particle */
-        for(ii = 0; ii < 3; ii++) {
-            pt->V[ii] = u0[ii] + wp[ii];
-            pt->X[ii] = pt->X[ii] + pt->V[ii] * h;
+        D_alpha   = K*R;
+        D_beta[0] = (1.0 - 1.5*R)*Gravity[0] + 1.5*R*dudt0[0] + K*R*u0[0];
+        D_beta[1] = (1.0 - 1.5*R)*Gravity[1] + 1.5*R*dudt0[1] + K*R*u0[1];
+        D_beta[2] = (1.0 - 1.5*R)*Gravity[2] + 1.5*R*dudt0[2] + K*R*u0[2];
+        for (ii=0; ii<3; ii++)
+        {
+            pt->V[ii] = (D_beta[ii]/D_alpha) + (pt->V[ii] - (D_beta[ii]/D_alpha))*exp(-D_alpha*h);
+            pt->X[ii] = pt->X[ii] + pt->V[ii]*h;
+            
             if(Data_MeshType == CARTESIAN && Data_XPeriodic == SPATIALPERIODIC) ReMapPt(pt, pt->X);
         }
         

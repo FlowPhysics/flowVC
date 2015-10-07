@@ -74,18 +74,24 @@ void LoadCartMeshData(void) {
 	if((Data_BinFileID = fopen(Data_BinFilePath, "rb")) == NULL) 
 		FatalError("Could not open file %s", Data_BinFilePath);
 	/* Read grid parameters */
-	if(fread(&Vel_CartMesh.XMin, sizeof(double), 1, Data_BinFileID) < 1) 
+	if(fread(&Vel_CartMesh.XMin, sizeof(double), 1, Data_BinFileID) < 1)
 		FatalError("Could not read Vel_CartMesh.XMin from file %s", Data_BinFilePath);
+    printf("Vel_CartMesh.XMin = %f\n", Vel_CartMesh.XMin);
 	if(fread(&Vel_CartMesh.XMax, sizeof(double), 1, Data_BinFileID) < 1) 
 		FatalError("Could not read Vel_CartMesh.XMax from file %s", Data_BinFilePath);
+    printf("Vel_CartMesh.XMax = %f\n", Vel_CartMesh.XMax);
 	if(fread(&Vel_CartMesh.XRes, sizeof(int), 1, Data_BinFileID) < 1) 
 		FatalError("Could not read Vel_CartMesh.XRes from file %s", Data_BinFilePath);
+    printf("Vel_CartMesh.XRes = %d\n", Vel_CartMesh.XRes);
 	if(fread(&Vel_CartMesh.YMin, sizeof(double), 1, Data_BinFileID) < 1) 
 		FatalError("Could not read Vel_CartMesh.YMin from file %s", Data_BinFilePath);
+     printf("Vel_CartMesh.YMin = %f\n", Vel_CartMesh.YMin);
 	if(fread(&Vel_CartMesh.YMax, sizeof(double), 1, Data_BinFileID) < 1) 
 		FatalError("Could not read Vel_CartMesh.YMax from file %s", Data_BinFilePath);
+    printf("Vel_CartMesh.YMax = %f\n", Vel_CartMesh.YMax);
 	if(fread(&Vel_CartMesh.YRes, sizeof(int), 1, Data_BinFileID) < 1) 
 		FatalError("Could not read Vel_CartMesh.YRes from file %s", Data_BinFilePath);
+    printf("Vel_CartMesh.YRes = %d\n", Vel_CartMesh.YRes);
 	if(fread(&Vel_CartMesh.ZMin, sizeof(double), 1, Data_BinFileID) < 1) 
 		FatalError("Could not read Vel_CartMesh.ZMin from file %s", Data_BinFilePath);
 	if(fread(&Vel_CartMesh.ZMax, sizeof(double), 1, Data_BinFileID) < 1) 
