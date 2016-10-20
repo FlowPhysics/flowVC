@@ -3,7 +3,7 @@ flowVC
 
 Flow Visualization Code
 
-Copyright 2013 Shadden Research Group. All rights reserved.
+Copyright Shadden Research Group. All rights reserved.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
 OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
